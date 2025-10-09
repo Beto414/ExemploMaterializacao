@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Início - SysCad Solutions";
+}
+
+<style>
+    .jumbotron {
+        background-color: #f8f9fa;
+        padding: 4rem 2rem;
+        margin-bottom: 2rem;
+        border-radius: .3rem;
+    }
+
+    .feature-box {
+        padding: 2rem;
+        background-color: #ffffff;
+        border: 1px solid #dee2e6;
+        border-radius: .25rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .feature-box p:last-of-type {
+            margin-top: auto;
+        }
+</style>
+
+<div class="jumbotron text-center">
+    <h1 class="display-4">Bem-vindo à SysCad Solutions</h1>
+    <p class="lead">Otimizando seu Gerenciamento de Dados com Eficiência e Precisão.</p>
+    <hr class="my-4">
+    <p>A SysCad Solutions é líder no desenvolvimento de sistemas de cadastro robustos e intuitivos. Nossa missão é transformar dados complexos em informações acessíveis, permitindo que sua equipe tome decisões mais rápidas e inteligentes. Este sistema de demonstração é um exemplo do nosso compromisso com a qualidade e a simplicidade, oferecendo módulos de gerenciamento para Pacientes e Frota de Veículos.</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="feature-box text-center">
+            <h2>Pacientes</h2>
+            <p>Gerencie informações vitais de pacientes com segurança. Nosso módulo permite o registro completo, a consulta rápida de históricos e a manutenção de dados de forma organizada e centralizada.</p>
+            <p>@Html.ActionLink("Gerenciar Pacientes »", "Index", "Paciente", null, new { @class = "btn btn-primary btn-lg" })</p>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="feature-box text-center">
+            <h2>Carros</h2>
+            <p>Controle sua frota de veículos com facilidade. Cadastre novos carros, atualize informações de manutenção, consulte detalhes por placa e mantenha um inventário preciso e sempre disponível.</p>
+            <p>@Html.ActionLink("Gerenciar Carros »", "Index", "Carro", null, new { @class = "btn btn-primary btn-lg" })</p>
+        </div>
+    </div>
+</div>

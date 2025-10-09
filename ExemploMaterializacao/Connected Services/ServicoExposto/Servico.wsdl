@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetMeusPacientes">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetMeusPacientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMeusPacientesResult" type="tns:ArrayOfPacienteTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfPacienteTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PacienteTO" nillable="true" type="tns:PacienteTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PacienteTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NomeMae" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Nascimento" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="Sexo" type="tns:SexoEnum" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="SexoEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Masculino" />
+          <s:enumeration value="Feminino" />
+          <s:enumeration value="NaoInformado" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetPacientePorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPacientePorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPacientePorIdResult" type="tns:PacienteTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdicionarPaciente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pacienteTO" type="tns:PacienteTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdicionarPacienteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AtualizarPaciente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pacienteTO" type="tns:PacienteTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AtualizarPacienteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ExcluirPaciente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirPacienteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTodosCarros">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTodosCarrosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTodosCarrosResult" type="tns:ArrayOfCarroTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCarroTO">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CarroTO" nillable="true" type="tns:CarroTO" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CarroTO">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Modelo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ano" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Marca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Placa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cor" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCarroPorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarroPorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCarroPorIdResult" type="tns:CarroTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdicionarCarro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="carroTO" type="tns:CarroTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdicionarCarroResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="AtualizarCarro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="carroTO" type="tns:CarroTO" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AtualizarCarroResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="ExcluirCarro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirCarroResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetMeusPacientesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMeusPacientes" />
+  </wsdl:message>
+  <wsdl:message name="GetMeusPacientesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMeusPacientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPacientePorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPacientePorId" />
+  </wsdl:message>
+  <wsdl:message name="GetPacientePorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPacientePorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdicionarPacienteSoapIn">
+    <wsdl:part name="parameters" element="tns:AdicionarPaciente" />
+  </wsdl:message>
+  <wsdl:message name="AdicionarPacienteSoapOut">
+    <wsdl:part name="parameters" element="tns:AdicionarPacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="AtualizarPacienteSoapIn">
+    <wsdl:part name="parameters" element="tns:AtualizarPaciente" />
+  </wsdl:message>
+  <wsdl:message name="AtualizarPacienteSoapOut">
+    <wsdl:part name="parameters" element="tns:AtualizarPacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirPacienteSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcluirPaciente" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirPacienteSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcluirPacienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTodosCarrosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTodosCarros" />
+  </wsdl:message>
+  <wsdl:message name="GetTodosCarrosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTodosCarrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCarroPorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCarroPorId" />
+  </wsdl:message>
+  <wsdl:message name="GetCarroPorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCarroPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdicionarCarroSoapIn">
+    <wsdl:part name="parameters" element="tns:AdicionarCarro" />
+  </wsdl:message>
+  <wsdl:message name="AdicionarCarroSoapOut">
+    <wsdl:part name="parameters" element="tns:AdicionarCarroResponse" />
+  </wsdl:message>
+  <wsdl:message name="AtualizarCarroSoapIn">
+    <wsdl:part name="parameters" element="tns:AtualizarCarro" />
+  </wsdl:message>
+  <wsdl:message name="AtualizarCarroSoapOut">
+    <wsdl:part name="parameters" element="tns:AtualizarCarroResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirCarroSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcluirCarro" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirCarroSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcluirCarroResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicoSoap">
+    <wsdl:operation name="GetMeusPacientes">
+      <wsdl:input message="tns:GetMeusPacientesSoapIn" />
+      <wsdl:output message="tns:GetMeusPacientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPacientePorId">
+      <wsdl:input message="tns:GetPacientePorIdSoapIn" />
+      <wsdl:output message="tns:GetPacientePorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarPaciente">
+      <wsdl:input message="tns:AdicionarPacienteSoapIn" />
+      <wsdl:output message="tns:AdicionarPacienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarPaciente">
+      <wsdl:input message="tns:AtualizarPacienteSoapIn" />
+      <wsdl:output message="tns:AtualizarPacienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirPaciente">
+      <wsdl:input message="tns:ExcluirPacienteSoapIn" />
+      <wsdl:output message="tns:ExcluirPacienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTodosCarros">
+      <wsdl:input message="tns:GetTodosCarrosSoapIn" />
+      <wsdl:output message="tns:GetTodosCarrosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCarroPorId">
+      <wsdl:input message="tns:GetCarroPorIdSoapIn" />
+      <wsdl:output message="tns:GetCarroPorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarCarro">
+      <wsdl:input message="tns:AdicionarCarroSoapIn" />
+      <wsdl:output message="tns:AdicionarCarroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarCarro">
+      <wsdl:input message="tns:AtualizarCarroSoapIn" />
+      <wsdl:output message="tns:AtualizarCarroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirCarro">
+      <wsdl:input message="tns:ExcluirCarroSoapIn" />
+      <wsdl:output message="tns:ExcluirCarroSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicoSoap" type="tns:ServicoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMeusPacientes">
+      <soap:operation soapAction="http://tempuri.org/GetMeusPacientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPacientePorId">
+      <soap:operation soapAction="http://tempuri.org/GetPacientePorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarPaciente">
+      <soap:operation soapAction="http://tempuri.org/AdicionarPaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarPaciente">
+      <soap:operation soapAction="http://tempuri.org/AtualizarPaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirPaciente">
+      <soap:operation soapAction="http://tempuri.org/ExcluirPaciente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTodosCarros">
+      <soap:operation soapAction="http://tempuri.org/GetTodosCarros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarroPorId">
+      <soap:operation soapAction="http://tempuri.org/GetCarroPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarCarro">
+      <soap:operation soapAction="http://tempuri.org/AdicionarCarro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarCarro">
+      <soap:operation soapAction="http://tempuri.org/AtualizarCarro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirCarro">
+      <soap:operation soapAction="http://tempuri.org/ExcluirCarro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicoSoap12" type="tns:ServicoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMeusPacientes">
+      <soap12:operation soapAction="http://tempuri.org/GetMeusPacientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPacientePorId">
+      <soap12:operation soapAction="http://tempuri.org/GetPacientePorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarPaciente">
+      <soap12:operation soapAction="http://tempuri.org/AdicionarPaciente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarPaciente">
+      <soap12:operation soapAction="http://tempuri.org/AtualizarPaciente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirPaciente">
+      <soap12:operation soapAction="http://tempuri.org/ExcluirPaciente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTodosCarros">
+      <soap12:operation soapAction="http://tempuri.org/GetTodosCarros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarroPorId">
+      <soap12:operation soapAction="http://tempuri.org/GetCarroPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarCarro">
+      <soap12:operation soapAction="http://tempuri.org/AdicionarCarro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AtualizarCarro">
+      <soap12:operation soapAction="http://tempuri.org/AtualizarCarro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirCarro">
+      <soap12:operation soapAction="http://tempuri.org/ExcluirCarro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Servico">
+    <wsdl:port name="ServicoSoap" binding="tns:ServicoSoap">
+      <soap:address location="https://localhost:44382/Servico.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicoSoap12" binding="tns:ServicoSoap12">
+      <soap12:address location="https://localhost:44382/Servico.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

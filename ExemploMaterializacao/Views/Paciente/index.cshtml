@@ -1,0 +1,106 @@
+﻿@model IEnumerable<TO.PacienteTO>
+@{
+    ViewBag.Title = "Lista de Pacientes";
+}
+
+<h2>Lista de Pacientes</h2>
+@Html.AntiForgeryToken()
+
+<p>
+    @Html.ActionLink("Adicionar Novo Paciente", "Create", "Paciente", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Ver Lista de Carros", "Index", "Carro", null, new { @class = "btn btn-info" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomeMae)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nascimento)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id="paciente-row-@item.Id">
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeMae)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nascimento)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                <a href="#" class="delete-link" data-id="@item.Id" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+
+<!-- --- MODIFICAÇÃO AQUI (Modal para Bootstrap 5) --- -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirmar Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Você tem certeza que deseja excluir este paciente?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" id="confirm-delete-btn">Excluir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    <script>
+        // O script jQuery permanece exatamente o mesmo, pois ele não depende
+        // dos atributos data-* do Bootstrap, apenas dos IDs e classes.
+        $(document).ready(function () {
+            var pacienteIdToDelete;
+
+            $('.delete-link').on('click', function (e) {
+                e.preventDefault();
+                pacienteIdToDelete = $(this).data('id');
+            });
+
+            $('#confirm-delete-btn').on('click', function () {
+                // Pega a instância do modal do Bootstrap 5 para poder fechá-lo via JS
+                var modal = bootstrap.Modal.getInstance(document.getElementById('deleteModal'));
+
+                $.ajax({
+                    url: '@Url.Action("Delete", "Paciente")',
+                    type: 'POST',
+                    data: {
+                        __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val(),
+                        id: pacienteIdToDelete
+                    },
+                    success: function (result) {
+                        modal.hide(); // Usa a API do Bootstrap 5 para fechar
+                        $('#paciente-row-' + pacienteIdToDelete).fadeOut(500, function () {
+                            $(this).remove();
+                        });
+                    },
+                    error: function (err) {
+                        alert('Ocorreu um erro ao tentar excluir o paciente.');
+                    }
+                });
+            });
+        });
+    </script>
+}
