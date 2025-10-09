@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using ExemploMaterializacao.ServicoExposto;
 
@@ -11,6 +12,16 @@ namespace ExemploMaterializacao.Controllers
         public PacienteController()
         {
             _servico = new ServicoSoapClient();
+        }
+
+        private void PrepararViewBagSexo()
+        {
+            var sexos = new List<SelectListItem>
+            {
+                new SelectListItem { Value = "0", Text = "Masculino" },
+                new SelectListItem { Value = "1", Text = "Feminino" }
+            };
+            ViewBag.Sexos = sexos;
         }
 
         public ActionResult Index()
@@ -47,6 +58,7 @@ namespace ExemploMaterializacao.Controllers
 
         public ActionResult Create()
         {
+            PrepararViewBagSexo();
             return View();
         }
 
@@ -65,8 +77,11 @@ namespace ExemploMaterializacao.Controllers
                     Sexo = (SexoEnum)pacienteViewModel.Sexo
                 };
                 _servico.AdicionarPaciente(pacienteParaServico);
+                TempData["SuccessMessage"] = "Paciente adicionado com sucesso!";
                 return RedirectToAction("Index");
             }
+
+            PrepararViewBagSexo();
             return View(pacienteViewModel);
         }
 
@@ -85,6 +100,8 @@ namespace ExemploMaterializacao.Controllers
                 Nascimento = pacienteDoServico.Nascimento,
                 Sexo = (TO.SexoEnum)pacienteDoServico.Sexo
             };
+
+            PrepararViewBagSexo();
             return View(pacienteViewModel);
         }
 
@@ -95,8 +112,11 @@ namespace ExemploMaterializacao.Controllers
             if (ModelState.IsValid)
             {
                 _servico.AtualizarPaciente(pacienteDoServico);
+                TempData["SuccessMessage"] = "Paciente atualizado com sucesso!";
                 return RedirectToAction("Index");
             }
+
+            PrepararViewBagSexo();
             return View(pacienteDoServico);
         }
 
@@ -125,7 +145,7 @@ namespace ExemploMaterializacao.Controllers
             try
             {
                 _servico.ExcluirPaciente(id);
-                return Json(new { success = true });
+                return Json(new { success = true, message = "Paciente excluído com sucesso!" });
             }
             catch (System.Exception ex)
             {

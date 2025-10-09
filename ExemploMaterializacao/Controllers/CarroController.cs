@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using ExemploMaterializacao.ServicoExposto;
 
@@ -8,7 +9,16 @@ namespace ExemploMaterializacao.Controllers
     {
         private readonly ServicoSoapClient _servico = new ServicoSoapClient();
 
-        // GET: Carro
+        private void PrepararViewBagAno()
+        {
+            var anos = new List<SelectListItem>();
+            for (int ano = System.DateTime.Now.Year + 1; ano >= 1950; ano--)
+            {
+                anos.Add(new SelectListItem { Value = ano.ToString(), Text = ano.ToString() });
+            }
+            ViewBag.Anos = anos;
+        }
+
         public ActionResult Index()
         {
             var carrosDoServico = _servico.GetTodosCarros();
@@ -24,7 +34,6 @@ namespace ExemploMaterializacao.Controllers
             return View(carrosViewModel);
         }
 
-        // GET: Carro/Details/5
         public ActionResult Details(int id)
         {
             var carroDoServico = _servico.GetCarroPorId(id);
@@ -44,13 +53,12 @@ namespace ExemploMaterializacao.Controllers
             return View(carroViewModel);
         }
 
-        // GET: Carro/Create
         public ActionResult Create()
         {
+            PrepararViewBagAno();
             return View();
         }
 
-        // POST: Carro/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(TO.CarroTO carroViewModel)
@@ -66,12 +74,14 @@ namespace ExemploMaterializacao.Controllers
                     Cor = carroViewModel.Cor
                 };
                 _servico.AdicionarCarro(carroParaServico);
+                TempData["SuccessMessage"] = "Carro adicionado com sucesso!";
                 return RedirectToAction("Index");
             }
+
+            PrepararViewBagAno();
             return View(carroViewModel);
         }
 
-        // GET: Carro/Edit/5
         public ActionResult Edit(int id)
         {
             var carroDoServico = _servico.GetCarroPorId(id);
@@ -88,10 +98,11 @@ namespace ExemploMaterializacao.Controllers
                 Placa = carroDoServico.Placa,
                 Cor = carroDoServico.Cor
             };
+
+            PrepararViewBagAno();
             return View(carroViewModel);
         }
 
-        // POST: Carro/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(TO.CarroTO carroViewModel)
@@ -108,12 +119,14 @@ namespace ExemploMaterializacao.Controllers
                     Cor = carroViewModel.Cor
                 };
                 _servico.AtualizarCarro(carroParaServico);
+                TempData["SuccessMessage"] = "Carro atualizado com sucesso!";
                 return RedirectToAction("Index");
             }
+
+            PrepararViewBagAno();
             return View(carroViewModel);
         }
 
-        // GET: Carro/Delete/5
         public ActionResult Delete(int id)
         {
             var carroDoServico = _servico.GetCarroPorId(id);
@@ -133,7 +146,6 @@ namespace ExemploMaterializacao.Controllers
             return View(carroViewModel);
         }
 
-        // POST: Carro/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -141,7 +153,7 @@ namespace ExemploMaterializacao.Controllers
             try
             {
                 _servico.ExcluirCarro(id);
-                return Json(new { success = true });
+                return Json(new { success = true, message = "Carro excluído com sucesso!" });
             }
             catch (System.Exception ex)
             {

@@ -4,6 +4,15 @@
 }
 
 <h2>Lista de Pacientes</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
 @Html.AntiForgeryToken()
 
 <p>
@@ -46,8 +55,6 @@
     }
 </table>
 
-
-<!-- --- MODIFICAÇÃO AQUI (Modal para Bootstrap 5) --- -->
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -56,7 +63,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Você tem certeza que deseja excluir este paciente?
+                <p>Você tem certeza que deseja excluir este paciente?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
@@ -66,11 +73,8 @@
     </div>
 </div>
 
-
 @section scripts {
     <script>
-        // O script jQuery permanece exatamente o mesmo, pois ele não depende
-        // dos atributos data-* do Bootstrap, apenas dos IDs e classes.
         $(document).ready(function () {
             var pacienteIdToDelete;
 
@@ -80,7 +84,6 @@
             });
 
             $('#confirm-delete-btn').on('click', function () {
-                // Pega a instância do modal do Bootstrap 5 para poder fechá-lo via JS
                 var modal = bootstrap.Modal.getInstance(document.getElementById('deleteModal'));
 
                 $.ajax({
@@ -91,10 +94,23 @@
                         id: pacienteIdToDelete
                     },
                     success: function (result) {
-                        modal.hide(); // Usa a API do Bootstrap 5 para fechar
+                        modal.hide();
                         $('#paciente-row-' + pacienteIdToDelete).fadeOut(500, function () {
                             $(this).remove();
                         });
+
+                        if (result.message) {
+                            var alertHtml = '<div class="alert alert-success alert-dismissible fade show" role="alert">' +
+                                result.message +
+                                '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                                '</div>';
+                            $('h2').after(alertHtml);
+                            window.setTimeout(function() {
+                                $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                                    $(this).remove();
+                                });
+                            }, 5000);
+                        }
                     },
                     error: function (err) {
                         alert('Ocorreu um erro ao tentar excluir o paciente.');

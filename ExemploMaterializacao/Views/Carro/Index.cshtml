@@ -5,6 +5,15 @@
 }
 
 <h2>Lista de Carros</h2>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
 @Html.AntiForgeryToken()
 
 <p>
@@ -80,6 +89,19 @@
                         $('#carro-row-' + carroIdToDelete).fadeOut(500, function () {
                             $(this).remove();
                         });
+
+                        if (result.message) {
+                            var alertHtml = '<div class="alert alert-success alert-dismissible fade show" role="alert">' +
+                                result.message +
+                                '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' +
+                                '</div>';
+                            $('h2').after(alertHtml);
+                            window.setTimeout(function() {
+                                $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                                    $(this).remove();
+                                });
+                            }, 5000);
+                        }
                     },
                     error: function (err) {
                         alert('Ocorreu um erro ao tentar excluir o carro.');
