@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - SysCad Solutions</title>
+    <link rel="icon" href="@Url.Content("~/faviconSysCad.png")" type="image/png" />
     @Styles.Render("~/Content/css")
-
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -23,14 +23,6 @@
                     <li>@Html.ActionLink("Pacientes", "Index", "Paciente", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Carros", "Index", "Carro", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
-
-                <!-- --- MODIFICAÇÃO AQUI: Estrutura HTML do Seletor Corrigida --- -->
-                <div class="theme-switch-wrapper">
-                    <label class="theme-switch" for="theme-switch-checkbox">
-                        <input type="checkbox" id="theme-switch-checkbox" />
-                        <span class="slider round"></span>
-                    </label>
-                </div>
             </div>
         </div>
     </nav>
@@ -43,47 +35,6 @@
     </div>
 
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-
-    <script>
-        // Usamos o $(document).ready() do jQuery para garantir que o DOM está pronto.
-        $(document).ready(function () {
-            console.log("Script de tema iniciado."); // Pista de depuração 1
-
-            const themeSwitch = $('#theme-switch-checkbox');
-            const htmlElement = $('html');
-            const currentTheme = localStorage.getItem('theme');
-
-            function setTheme(theme) {
-                if (theme === 'dark') {
-                    htmlElement.attr('data-theme', 'dark');
-                    themeSwitch.prop('checked', true);
-                } else {
-                    htmlElement.removeAttr('data-theme');
-                    themeSwitch.prop('checked', false);
-                }
-            }
-
-            // Aplica o tema salvo ao carregar
-            if (currentTheme) {
-                console.log("Tema salvo encontrado:", currentTheme); // Pista de depuração 2
-                setTheme(currentTheme);
-            }
-
-            // "Ouve" por mudanças no seletor
-            themeSwitch.on('change', function () {
-                console.log("Seletor de tema alterado!"); // Pista de depuração 3
-
-                if ($(this).is(':checked')) {
-                    localStorage.setItem('theme', 'dark');
-                    setTheme('dark');
-                } else {
-                    localStorage.setItem('theme', 'light');
-                    setTheme('light');
-                }
-            });
-        });
-    </script>
 
     @RenderSection("scripts", required: false)
 </body>

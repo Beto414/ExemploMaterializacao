@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Web.Mvc;
 using ExemploMaterializacao.ServicoExposto;
 
@@ -63,19 +64,30 @@ namespace ExemploMaterializacao.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(TO.CarroTO carroViewModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var carroParaServico = new CarroTO
+                if (ModelState.IsValid)
                 {
-                    Marca = carroViewModel.Marca,
-                    Modelo = carroViewModel.Modelo,
-                    Ano = carroViewModel.Ano,
-                    Placa = carroViewModel.Placa,
-                    Cor = carroViewModel.Cor
-                };
-                _servico.AdicionarCarro(carroParaServico);
-                TempData["SuccessMessage"] = "Carro adicionado com sucesso!";
-                return RedirectToAction("Index");
+                    var carroParaServico = new CarroTO
+                    {
+                        Marca = carroViewModel.Marca,
+                        Modelo = carroViewModel.Modelo,
+                        Ano = carroViewModel.Ano,
+                        Placa = carroViewModel.Placa,
+                        Cor = carroViewModel.Cor
+                    };
+                    _servico.AdicionarCarro(carroParaServico);
+                    TempData["SuccessMessage"] = "Carro adicionado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (FaultException ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+            }
+            catch (System.Exception ex)
+            {
+                ModelState.AddModelError("", "Ocorreu um erro inesperado: " + ex.Message);
             }
 
             PrepararViewBagAno();
@@ -107,20 +119,31 @@ namespace ExemploMaterializacao.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(TO.CarroTO carroViewModel)
         {
-            if (ModelState.IsValid)
+            try
             {
-                var carroParaServico = new CarroTO
+                if (ModelState.IsValid)
                 {
-                    Id = carroViewModel.Id,
-                    Marca = carroViewModel.Marca,
-                    Modelo = carroViewModel.Modelo,
-                    Ano = carroViewModel.Ano,
-                    Placa = carroViewModel.Placa,
-                    Cor = carroViewModel.Cor
-                };
-                _servico.AtualizarCarro(carroParaServico);
-                TempData["SuccessMessage"] = "Carro atualizado com sucesso!";
-                return RedirectToAction("Index");
+                    var carroParaServico = new CarroTO
+                    {
+                        Id = carroViewModel.Id,
+                        Marca = carroViewModel.Marca,
+                        Modelo = carroViewModel.Modelo,
+                        Ano = carroViewModel.Ano,
+                        Placa = carroViewModel.Placa,
+                        Cor = carroViewModel.Cor
+                    };
+                    _servico.AtualizarCarro(carroParaServico);
+                    TempData["SuccessMessage"] = "Carro atualizado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (FaultException ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+            }
+            catch (System.Exception ex) 
+            {
+                ModelState.AddModelError("", "Ocorreu um erro inesperado: " + ex.Message);
             }
 
             PrepararViewBagAno();

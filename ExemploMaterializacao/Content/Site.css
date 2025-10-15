@@ -1,51 +1,12 @@
 ﻿/* ==========================================================================
-   1. Definição das Variáveis de Tema
+   Estilos Globais e Tipografia
    ========================================================================== */
-:root {
-    --bg-color: #f8f9fa;
-    --text-color: #212529;
-    --card-bg-color: #ffffff;
-    --card-border-color: #e9ecef;
-    --navbar-bg-color: #1A237E;
-    --navbar-border-color: #00BCD4;
-    --btn-primary-bg: #283593;
-    --btn-primary-hover: #1A237E;
-    --btn-primary-text: #ffffff;
-    --btn-info-bg: #00BCD4;
-    --btn-info-hover: #0097A7;
-    --btn-info-text: #ffffff;
-    --link-color: #1A237E;
-    --table-link-color: #283593;
-    --shadow-color: rgba(0,0,0,0.1);
-}
 
-[data-theme='dark'] {
-    --bg-color: #121212;
-    --text-color: #e0e0e0;
-    --card-bg-color: #1e1e1e;
-    --card-border-color: #333;
-    --navbar-bg-color: #212121;
-    --navbar-border-color: #00BCD4;
-    --btn-primary-bg: #00BCD4;
-    --btn-primary-hover: #0097A7;
-    --btn-primary-text: #121212;
-    --btn-info-bg: #283593;
-    --btn-info-hover: #1A237E;
-    --btn-info-text: #ffffff;
-    --link-color: #00BCD4;
-    --table-link-color: #82b1ff;
-    --shadow-color: rgba(0,0,0,0.4);
-}
-
-/* ==========================================================================
-   2. Estilos Globais
-   ========================================================================== */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
     padding-top: 70px;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    transition: background-color 0.3s, color 0.3s;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -56,17 +17,27 @@ h1, h2, h3, h4, h5, h6 {
     padding: 15px;
 }
 
-    .body-content a {
-        color: var(--link-color);
-    }
+/* ==========================================================================
+   Barra de Navegação (Navbar)
+   ========================================================================== */
+
+.navbar-dark.bg-dark {
+    background-color: #1A237E !important;
+    border-bottom: 3px solid #00BCD4;
+}
+
+.navbar-brand {
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    transition: color 0.2s ease-in-out;
+}
 
 /* ==========================================================================
-   3. Componentes (Navbar, Botões, Tabelas, etc.)
+   Botões
    ========================================================================== */
-.navbar-dark.bg-dark {
-    background-color: var(--navbar-bg-color) !important;
-    border-bottom: 3px solid var(--navbar-border-color);
-}
 
 .btn {
     border-radius: 50px;
@@ -77,138 +48,134 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary {
-    background-color: var(--btn-primary-bg);
-    color: var(--btn-primary-text);
+    background-color: #283593;
+    border-color: #283593;
+    color: #ffffff;
 }
 
     .btn-primary:hover {
-        background-color: var(--btn-primary-hover);
+        background-color: #1A237E;
+        border-color: #1A237E;
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px var(--shadow-color);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
 .btn-info {
-    background-color: var(--btn-info-bg);
-    color: var(--btn-info-text);
+    background-color: #00BCD4;
+    border-color: #00BCD4;
+    color: #fff;
 }
 
     .btn-info:hover {
-        background-color: var(--btn-info-hover);
+        background-color: #0097A7;
+        border-color: #0097A7;
         transform: translateY(-2px);
-        box-shadow: 0 4px 8px var(--shadow-color);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
+.btn-danger {
+    border-radius: 50px;
+}
+
+/* ==========================================================================
+   Tabelas e Links
+   ========================================================================== */
+
 .table {
-    background-color: var(--card-bg-color);
-    color: var(--text-color);
-    border: 1px solid var(--card-border-color);
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
     .table thead th {
-        color: var(--link-color);
+        border-top: none;
+        font-weight: 600;
+        color: #1A237E;
     }
 
     .table a {
-        color: var(--table-link-color);
+        color: #283593;
+        font-weight: 500;
     }
 
-.jumbotron, .feature-box {
-    background-color: var(--card-bg-color);
-    border: 1px solid var(--card-border-color);
-    color: var(--text-color);
+/* ==========================================================================
+   Homepage e Componentes Específicos
+   ========================================================================== */
+
+.jumbotron {
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    padding: 4rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: .3rem;
+}
+
+.feature-box {
+    padding: 2rem;
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: .25rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
 }
 
     .feature-box:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 16px var(--shadow-color);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
 
-.modal-content {
-    background-color: var(--card-bg-color);
-    color: var(--text-color);
-}
+    .feature-box p:last-of-type {
+        margin-top: auto;
+    }
 
-[data-theme='dark'] .btn-close {
-    filter: invert(1) grayscale(100%) brightness(200%);
+/* ==========================================================================
+   Outros Componentes
+   ========================================================================== */
+
+.modal-content {
+    /* Estilos padrão para o modal, se necessário */
 }
 
 .form-control, input, select, textarea {
     max-width: 280px;
 }
 
-[data-theme='dark'] .form-control,
-[data-theme='dark'] input[type="text"],
-[data-theme='dark'] input[type="number"],
-[data-theme='dark'] input[type="date"],
-[data-theme='dark'] textarea,
-[data-theme='dark'] select {
-    background-color: #333;
-    color: var(--text-color);
-    border-color: #555;
-}
-
-    [data-theme='dark'] .form-control:focus {
-        background-color: #444;
-        border-color: var(--link-color);
-        box-shadow: 0 0 0 0.25rem rgba(0, 188, 212, 0.25);
-    }
-
 /* ==========================================================================
-   4. Estilos do Seletor de Tema (Toggle Switch)
+   Modal de Confirmação Customizado
    ========================================================================== */
-.theme-switch-wrapper {
-    display: flex;
-    align-items: center;
-    margin-left: 15px;
-}
-
-.theme-switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-}
-
-    .theme-switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-    }
-
-.slider {
-    position: absolute;
-    cursor: pointer;
+.modal-overlay {
+    position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-    .slider:before {
-        position: absolute;
-        content: "";
-        height: 16px;
-        width: 16px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        transition: .4s;
-    }
-
-input:checked + .slider {
-    background-color: #00BCD4;
+.modal-content-custom {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    max-width: 400px;
 }
 
-    input:checked + .slider:before {
-        transform: translateX(26px);
+    .modal-content-custom h5 {
+        margin-top: 0;
+        font-weight: 500;
     }
 
-.slider.round {
-    border-radius: 34px;
+.modal-footer-custom {
+    margin-top: 20px;
 }
 
-    .slider.round:before {
-        border-radius: 50%;
-    }
+[data-theme='dark'] .modal-content-custom {
+    background: #1e1e1e;
+    color: #e0e0e0;
+}

@@ -25,11 +25,19 @@ namespace Negocio
 
         public void Adicionar(CarroTO carroTO)
         {
+            if (_repositorio.PlacaExiste(carroTO.Placa, 0))
+            {
+                throw new System.Exception("A placa informada já está cadastrada no sistema.");
+            }
             _repositorio.Novo(carroTO);
         }
 
         public void Atualizar(CarroTO carroTO)
         {
+            if (_repositorio.PlacaExiste(carroTO.Placa, carroTO.Id))
+            {
+                throw new System.Exception("A placa informada já está cadastrada para outro veículo.");
+            }
             _repositorio.Atualiza(carroTO);
         }
 

@@ -21,7 +21,6 @@ namespace Repositorio
         {
             Carro entity = new Carro();
             entity.Apply(carroTO);
-
             this.Contexto.Carroes.Add(entity);
             this.Contexto.SaveChanges();
         }
@@ -45,6 +44,11 @@ namespace Repositorio
                 this.Contexto.Carroes.Remove(entity);
                 this.Contexto.SaveChanges();
             }
+        }
+
+        public bool PlacaExiste(string placa, int id)
+        {
+            return this.Contexto.Carroes.Any(c => c.Placa.ToUpper() == placa.ToUpper() && c.id != id);
         }
     }
 }

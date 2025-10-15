@@ -1,6 +1,7 @@
 ﻿using Negocio;
 using System.Collections.Generic;
 using System.Web.Services;
+using System.Web.Services.Protocols;
 using TO;
 
 namespace Servico
@@ -11,11 +12,9 @@ namespace Servico
     public class Servico : System.Web.Services.WebService
     {
         private readonly PacienteNegocio _pacienteNegocio = new PacienteNegocio();
-
         private readonly CarroNegocio _carroNegocio = new CarroNegocio();
 
-
-        #region Métodos de Paciente (INTOCÁVEIS)
+        #region Métodos de Paciente
 
         [WebMethod]
         public List<PacienteTO> GetMeusPacientes()
@@ -32,13 +31,27 @@ namespace Servico
         [WebMethod]
         public void AdicionarPaciente(PacienteTO pacienteTO)
         {
-            _pacienteNegocio.AdicionarPaciente(pacienteTO);
+            try
+            {
+                _pacienteNegocio.AdicionarPaciente(pacienteTO);
+            }
+            catch (System.Exception ex)
+            {
+                throw new SoapException(ex.Message, SoapException.ClientFaultCode);
+            }
         }
 
         [WebMethod]
         public void AtualizarPaciente(PacienteTO pacienteTO)
         {
-            _pacienteNegocio.AtualizarPaciente(pacienteTO);
+            try
+            {
+                _pacienteNegocio.AtualizarPaciente(pacienteTO);
+            }
+            catch (System.Exception ex)
+            {
+                throw new SoapException(ex.Message, SoapException.ClientFaultCode);
+            }
         }
 
         [WebMethod]
@@ -49,10 +62,7 @@ namespace Servico
 
         #endregion
 
-
-        #region Métodos de Carro (NOVOS)
-
-
+        #region Métodos de Carro
 
         [WebMethod]
         public List<CarroTO> GetTodosCarros()
@@ -69,13 +79,27 @@ namespace Servico
         [WebMethod]
         public void AdicionarCarro(CarroTO carroTO)
         {
-            _carroNegocio.Adicionar(carroTO);
+            try
+            {
+                _carroNegocio.Adicionar(carroTO);
+            }
+            catch (System.Exception ex)
+            {
+                throw new SoapException(ex.Message, SoapException.ClientFaultCode);
+            }
         }
 
         [WebMethod]
         public void AtualizarCarro(CarroTO carroTO)
         {
-            _carroNegocio.Atualizar(carroTO);
+            try
+            {
+                _carroNegocio.Atualizar(carroTO);
+            }
+            catch (System.Exception ex)
+            {
+                throw new SoapException(ex.Message, SoapException.ClientFaultCode);
+            }
         }
 
         [WebMethod]
