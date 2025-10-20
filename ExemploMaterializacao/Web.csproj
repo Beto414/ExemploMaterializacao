@@ -127,6 +127,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CarroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PacienteController.cs" />
@@ -136,25 +137,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.GetMeusPacientesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.PacienteTO.datasource">
+    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.AdicionarCarroResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.AdicionarPacienteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.AtualizarCarroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.AtualizarPacienteResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.GetPacientePorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.AdicionarCarroResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.AtualizarCarroResponse.datasource">
+    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.CarroTO.datasource">
@@ -163,7 +158,28 @@
     <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.GetCarroPorIdResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.GetMeusPacientesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.GetPacientePorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.GetTodosCarrosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.LoginUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.PacienteTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.RegistrarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\ServicoExposto\ExemploMaterializacao.ServicoExposto.UsuarioTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Connected Services\ServicoExposto\Servico.disco" />
@@ -236,6 +252,9 @@
     <Content Include="Views\Carro\Edit.cshtml" />
     <Content Include="Views\Carro\Details.cshtml" />
     <Content Include="Views\Carro\Delete.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

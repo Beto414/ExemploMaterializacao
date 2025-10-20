@@ -257,6 +257,130 @@ namespace ExemploMaterializacao.ServicoExposto {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="UsuarioTO", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class UsuarioTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NomeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NomeUsuarioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SenhaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ConfirmarSenhaField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string Nome {
+            get {
+                return this.NomeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NomeField, value) != true)) {
+                    this.NomeField = value;
+                    this.RaisePropertyChanged("Nome");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public string NomeUsuario {
+            get {
+                return this.NomeUsuarioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NomeUsuarioField, value) != true)) {
+                    this.NomeUsuarioField = value;
+                    this.RaisePropertyChanged("NomeUsuario");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=3)]
+        public string Email {
+            get {
+                return this.EmailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmailField, value) != true)) {
+                    this.EmailField = value;
+                    this.RaisePropertyChanged("Email");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=4)]
+        public string Senha {
+            get {
+                return this.SenhaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SenhaField, value) != true)) {
+                    this.SenhaField = value;
+                    this.RaisePropertyChanged("Senha");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=5)]
+        public string ConfirmarSenha {
+            get {
+                return this.ConfirmarSenhaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ConfirmarSenhaField, value) != true)) {
+                    this.ConfirmarSenhaField = value;
+                    this.RaisePropertyChanged("ConfirmarSenha");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServicoExposto.ServicoSoap")]
     public interface ServicoSoap {
@@ -328,6 +452,34 @@ namespace ExemploMaterializacao.ServicoExposto {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ExcluirCarro", ReplyAction="*")]
         System.Threading.Tasks.Task ExcluirCarroAsync(int id);
+        
+        // CODEGEN: Gerando contrato de mensagem porque o nome do elemento usuarioTO no namespace http://tempuri.org/ não está marcado como nulo
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegistrarUsuario", ReplyAction="*")]
+        ExemploMaterializacao.ServicoExposto.RegistrarUsuarioResponse RegistrarUsuario(ExemploMaterializacao.ServicoExposto.RegistrarUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RegistrarUsuario", ReplyAction="*")]
+        System.Threading.Tasks.Task<ExemploMaterializacao.ServicoExposto.RegistrarUsuarioResponse> RegistrarUsuarioAsync(ExemploMaterializacao.ServicoExposto.RegistrarUsuarioRequest request);
+        
+        // CODEGEN: Gerando contrato de mensagem porque o nome do elemento nomeUsuario no namespace http://tempuri.org/ não está marcado como nulo
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LoginUsuario", ReplyAction="*")]
+        ExemploMaterializacao.ServicoExposto.LoginUsuarioResponse LoginUsuario(ExemploMaterializacao.ServicoExposto.LoginUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/LoginUsuario", ReplyAction="*")]
+        System.Threading.Tasks.Task<ExemploMaterializacao.ServicoExposto.LoginUsuarioResponse> LoginUsuarioAsync(ExemploMaterializacao.ServicoExposto.LoginUsuarioRequest request);
+        
+        // CODEGEN: Gerando contrato de mensagem porque o nome do elemento nomeUsuario no namespace http://tempuri.org/ não está marcado como nulo
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetPerfilUsuario", ReplyAction="*")]
+        ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioResponse GetPerfilUsuario(ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetPerfilUsuario", ReplyAction="*")]
+        System.Threading.Tasks.Task<ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioResponse> GetPerfilUsuarioAsync(ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioRequest request);
+        
+        // CODEGEN: Gerando contrato de mensagem porque o nome do elemento usuarioTO no namespace http://tempuri.org/ não está marcado como nulo
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AtualizarPerfilUsuario", ReplyAction="*")]
+        ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioResponse AtualizarPerfilUsuario(ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AtualizarPerfilUsuario", ReplyAction="*")]
+        System.Threading.Tasks.Task<ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioResponse> AtualizarPerfilUsuarioAsync(ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -832,6 +984,268 @@ namespace ExemploMaterializacao.ServicoExposto {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class RegistrarUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="RegistrarUsuario", Namespace="http://tempuri.org/", Order=0)]
+        public ExemploMaterializacao.ServicoExposto.RegistrarUsuarioRequestBody Body;
+        
+        public RegistrarUsuarioRequest() {
+        }
+        
+        public RegistrarUsuarioRequest(ExemploMaterializacao.ServicoExposto.RegistrarUsuarioRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class RegistrarUsuarioRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ExemploMaterializacao.ServicoExposto.UsuarioTO usuarioTO;
+        
+        public RegistrarUsuarioRequestBody() {
+        }
+        
+        public RegistrarUsuarioRequestBody(ExemploMaterializacao.ServicoExposto.UsuarioTO usuarioTO) {
+            this.usuarioTO = usuarioTO;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class RegistrarUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="RegistrarUsuarioResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ExemploMaterializacao.ServicoExposto.RegistrarUsuarioResponseBody Body;
+        
+        public RegistrarUsuarioResponse() {
+        }
+        
+        public RegistrarUsuarioResponse(ExemploMaterializacao.ServicoExposto.RegistrarUsuarioResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class RegistrarUsuarioResponseBody {
+        
+        public RegistrarUsuarioResponseBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class LoginUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="LoginUsuario", Namespace="http://tempuri.org/", Order=0)]
+        public ExemploMaterializacao.ServicoExposto.LoginUsuarioRequestBody Body;
+        
+        public LoginUsuarioRequest() {
+        }
+        
+        public LoginUsuarioRequest(ExemploMaterializacao.ServicoExposto.LoginUsuarioRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class LoginUsuarioRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nomeUsuario;
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=1)]
+        public string senha;
+        
+        public LoginUsuarioRequestBody() {
+        }
+        
+        public LoginUsuarioRequestBody(string nomeUsuario, string senha) {
+            this.nomeUsuario = nomeUsuario;
+            this.senha = senha;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class LoginUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="LoginUsuarioResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ExemploMaterializacao.ServicoExposto.LoginUsuarioResponseBody Body;
+        
+        public LoginUsuarioResponse() {
+        }
+        
+        public LoginUsuarioResponse(ExemploMaterializacao.ServicoExposto.LoginUsuarioResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class LoginUsuarioResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ExemploMaterializacao.ServicoExposto.UsuarioTO LoginUsuarioResult;
+        
+        public LoginUsuarioResponseBody() {
+        }
+        
+        public LoginUsuarioResponseBody(ExemploMaterializacao.ServicoExposto.UsuarioTO LoginUsuarioResult) {
+            this.LoginUsuarioResult = LoginUsuarioResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetPerfilUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetPerfilUsuario", Namespace="http://tempuri.org/", Order=0)]
+        public ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioRequestBody Body;
+        
+        public GetPerfilUsuarioRequest() {
+        }
+        
+        public GetPerfilUsuarioRequest(ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetPerfilUsuarioRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string nomeUsuario;
+        
+        public GetPerfilUsuarioRequestBody() {
+        }
+        
+        public GetPerfilUsuarioRequestBody(string nomeUsuario) {
+            this.nomeUsuario = nomeUsuario;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class GetPerfilUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetPerfilUsuarioResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioResponseBody Body;
+        
+        public GetPerfilUsuarioResponse() {
+        }
+        
+        public GetPerfilUsuarioResponse(ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class GetPerfilUsuarioResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ExemploMaterializacao.ServicoExposto.UsuarioTO GetPerfilUsuarioResult;
+        
+        public GetPerfilUsuarioResponseBody() {
+        }
+        
+        public GetPerfilUsuarioResponseBody(ExemploMaterializacao.ServicoExposto.UsuarioTO GetPerfilUsuarioResult) {
+            this.GetPerfilUsuarioResult = GetPerfilUsuarioResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AtualizarPerfilUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AtualizarPerfilUsuario", Namespace="http://tempuri.org/", Order=0)]
+        public ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioRequestBody Body;
+        
+        public AtualizarPerfilUsuarioRequest() {
+        }
+        
+        public AtualizarPerfilUsuarioRequest(ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class AtualizarPerfilUsuarioRequestBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public ExemploMaterializacao.ServicoExposto.UsuarioTO usuarioTO;
+        
+        public AtualizarPerfilUsuarioRequestBody() {
+        }
+        
+        public AtualizarPerfilUsuarioRequestBody(ExemploMaterializacao.ServicoExposto.UsuarioTO usuarioTO) {
+            this.usuarioTO = usuarioTO;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class AtualizarPerfilUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AtualizarPerfilUsuarioResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioResponseBody Body;
+        
+        public AtualizarPerfilUsuarioResponse() {
+        }
+        
+        public AtualizarPerfilUsuarioResponse(ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class AtualizarPerfilUsuarioResponseBody {
+        
+        public AtualizarPerfilUsuarioResponseBody() {
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ServicoSoapChannel : ExemploMaterializacao.ServicoExposto.ServicoSoap, System.ServiceModel.IClientChannel {
     }
@@ -1065,6 +1479,106 @@ namespace ExemploMaterializacao.ServicoExposto {
         
         public System.Threading.Tasks.Task ExcluirCarroAsync(int id) {
             return base.Channel.ExcluirCarroAsync(id);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ExemploMaterializacao.ServicoExposto.RegistrarUsuarioResponse ExemploMaterializacao.ServicoExposto.ServicoSoap.RegistrarUsuario(ExemploMaterializacao.ServicoExposto.RegistrarUsuarioRequest request) {
+            return base.Channel.RegistrarUsuario(request);
+        }
+        
+        public void RegistrarUsuario(ExemploMaterializacao.ServicoExposto.UsuarioTO usuarioTO) {
+            ExemploMaterializacao.ServicoExposto.RegistrarUsuarioRequest inValue = new ExemploMaterializacao.ServicoExposto.RegistrarUsuarioRequest();
+            inValue.Body = new ExemploMaterializacao.ServicoExposto.RegistrarUsuarioRequestBody();
+            inValue.Body.usuarioTO = usuarioTO;
+            ExemploMaterializacao.ServicoExposto.RegistrarUsuarioResponse retVal = ((ExemploMaterializacao.ServicoExposto.ServicoSoap)(this)).RegistrarUsuario(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ExemploMaterializacao.ServicoExposto.RegistrarUsuarioResponse> ExemploMaterializacao.ServicoExposto.ServicoSoap.RegistrarUsuarioAsync(ExemploMaterializacao.ServicoExposto.RegistrarUsuarioRequest request) {
+            return base.Channel.RegistrarUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ExemploMaterializacao.ServicoExposto.RegistrarUsuarioResponse> RegistrarUsuarioAsync(ExemploMaterializacao.ServicoExposto.UsuarioTO usuarioTO) {
+            ExemploMaterializacao.ServicoExposto.RegistrarUsuarioRequest inValue = new ExemploMaterializacao.ServicoExposto.RegistrarUsuarioRequest();
+            inValue.Body = new ExemploMaterializacao.ServicoExposto.RegistrarUsuarioRequestBody();
+            inValue.Body.usuarioTO = usuarioTO;
+            return ((ExemploMaterializacao.ServicoExposto.ServicoSoap)(this)).RegistrarUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ExemploMaterializacao.ServicoExposto.LoginUsuarioResponse ExemploMaterializacao.ServicoExposto.ServicoSoap.LoginUsuario(ExemploMaterializacao.ServicoExposto.LoginUsuarioRequest request) {
+            return base.Channel.LoginUsuario(request);
+        }
+        
+        public ExemploMaterializacao.ServicoExposto.UsuarioTO LoginUsuario(string nomeUsuario, string senha) {
+            ExemploMaterializacao.ServicoExposto.LoginUsuarioRequest inValue = new ExemploMaterializacao.ServicoExposto.LoginUsuarioRequest();
+            inValue.Body = new ExemploMaterializacao.ServicoExposto.LoginUsuarioRequestBody();
+            inValue.Body.nomeUsuario = nomeUsuario;
+            inValue.Body.senha = senha;
+            ExemploMaterializacao.ServicoExposto.LoginUsuarioResponse retVal = ((ExemploMaterializacao.ServicoExposto.ServicoSoap)(this)).LoginUsuario(inValue);
+            return retVal.Body.LoginUsuarioResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ExemploMaterializacao.ServicoExposto.LoginUsuarioResponse> ExemploMaterializacao.ServicoExposto.ServicoSoap.LoginUsuarioAsync(ExemploMaterializacao.ServicoExposto.LoginUsuarioRequest request) {
+            return base.Channel.LoginUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ExemploMaterializacao.ServicoExposto.LoginUsuarioResponse> LoginUsuarioAsync(string nomeUsuario, string senha) {
+            ExemploMaterializacao.ServicoExposto.LoginUsuarioRequest inValue = new ExemploMaterializacao.ServicoExposto.LoginUsuarioRequest();
+            inValue.Body = new ExemploMaterializacao.ServicoExposto.LoginUsuarioRequestBody();
+            inValue.Body.nomeUsuario = nomeUsuario;
+            inValue.Body.senha = senha;
+            return ((ExemploMaterializacao.ServicoExposto.ServicoSoap)(this)).LoginUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioResponse ExemploMaterializacao.ServicoExposto.ServicoSoap.GetPerfilUsuario(ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioRequest request) {
+            return base.Channel.GetPerfilUsuario(request);
+        }
+        
+        public ExemploMaterializacao.ServicoExposto.UsuarioTO GetPerfilUsuario(string nomeUsuario) {
+            ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioRequest inValue = new ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioRequest();
+            inValue.Body = new ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioRequestBody();
+            inValue.Body.nomeUsuario = nomeUsuario;
+            ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioResponse retVal = ((ExemploMaterializacao.ServicoExposto.ServicoSoap)(this)).GetPerfilUsuario(inValue);
+            return retVal.Body.GetPerfilUsuarioResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioResponse> ExemploMaterializacao.ServicoExposto.ServicoSoap.GetPerfilUsuarioAsync(ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioRequest request) {
+            return base.Channel.GetPerfilUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioResponse> GetPerfilUsuarioAsync(string nomeUsuario) {
+            ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioRequest inValue = new ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioRequest();
+            inValue.Body = new ExemploMaterializacao.ServicoExposto.GetPerfilUsuarioRequestBody();
+            inValue.Body.nomeUsuario = nomeUsuario;
+            return ((ExemploMaterializacao.ServicoExposto.ServicoSoap)(this)).GetPerfilUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioResponse ExemploMaterializacao.ServicoExposto.ServicoSoap.AtualizarPerfilUsuario(ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioRequest request) {
+            return base.Channel.AtualizarPerfilUsuario(request);
+        }
+        
+        public void AtualizarPerfilUsuario(ExemploMaterializacao.ServicoExposto.UsuarioTO usuarioTO) {
+            ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioRequest inValue = new ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioRequest();
+            inValue.Body = new ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioRequestBody();
+            inValue.Body.usuarioTO = usuarioTO;
+            ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioResponse retVal = ((ExemploMaterializacao.ServicoExposto.ServicoSoap)(this)).AtualizarPerfilUsuario(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioResponse> ExemploMaterializacao.ServicoExposto.ServicoSoap.AtualizarPerfilUsuarioAsync(ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioRequest request) {
+            return base.Channel.AtualizarPerfilUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioResponse> AtualizarPerfilUsuarioAsync(ExemploMaterializacao.ServicoExposto.UsuarioTO usuarioTO) {
+            ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioRequest inValue = new ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioRequest();
+            inValue.Body = new ExemploMaterializacao.ServicoExposto.AtualizarPerfilUsuarioRequestBody();
+            inValue.Body.usuarioTO = usuarioTO;
+            return ((ExemploMaterializacao.ServicoExposto.ServicoSoap)(this)).AtualizarPerfilUsuarioAsync(inValue);
         }
     }
 }

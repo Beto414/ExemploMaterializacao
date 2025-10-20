@@ -5,6 +5,7 @@ using ExemploMaterializacao.ServicoExposto;
 
 namespace ExemploMaterializacao.Controllers
 {
+    [Authorize]
     public class PacienteController : Controller
     {
         private readonly ServicoSoapClient _servico;

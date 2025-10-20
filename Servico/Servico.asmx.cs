@@ -13,6 +13,8 @@ namespace Servico
     {
         private readonly PacienteNegocio _pacienteNegocio = new PacienteNegocio();
         private readonly CarroNegocio _carroNegocio = new CarroNegocio();
+        private readonly UsuarioNegocio _usuarioNegocio = new UsuarioNegocio(); // Nova instância
+
 
         #region Métodos de Paciente
 
@@ -106,6 +108,44 @@ namespace Servico
         public void ExcluirCarro(int id)
         {
             _carroNegocio.Excluir(id);
+        }
+
+        [WebMethod]
+        public void RegistrarUsuario(UsuarioTO usuarioTO)
+        {
+            try
+            {
+                _usuarioNegocio.Registrar(usuarioTO);
+            }
+            catch (System.Exception ex)
+            {
+                throw new SoapException(ex.Message, SoapException.ClientFaultCode);
+            }
+        }
+
+        [WebMethod]
+        public UsuarioTO LoginUsuario(string nomeUsuario, string senha)
+        {
+            return _usuarioNegocio.Login(nomeUsuario, senha);
+        }
+
+        [WebMethod]
+        public UsuarioTO GetPerfilUsuario(string nomeUsuario)
+        {
+            return _usuarioNegocio.GetPerfil(nomeUsuario);
+        }
+
+        [WebMethod]
+        public void AtualizarPerfilUsuario(UsuarioTO usuarioTO)
+        {
+            try
+            {
+                _usuarioNegocio.AtualizarPerfil(usuarioTO);
+            }
+            catch (System.Exception ex)
+            {
+                throw new SoapException(ex.Message, SoapException.ClientFaultCode);
+            }
         }
 
         #endregion

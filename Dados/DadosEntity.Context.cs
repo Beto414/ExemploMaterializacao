@@ -28,5 +28,6 @@ namespace Dados
         public virtual DbSet<Atendimento> Atendimentoes { get; set; }
         public virtual DbSet<Paciente> Pacientes { get; set; }
         public virtual DbSet<Carro> Carroes { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
     }
 }
